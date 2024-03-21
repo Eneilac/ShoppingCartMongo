@@ -5,7 +5,7 @@ from entities.Products import ProductsEntity
 blueprint = Blueprint("products_page", __name__, url_prefix="/products")
 
 
-@blueprint.route('/', methods=['GET'], endpoint='products')
+@blueprint.route('/', methods=['GET'], endpoint='get_products')
 def get_products():
     prod_ent = ProductsEntity()
     products = prod_ent.get_all_products()
@@ -16,7 +16,7 @@ def get_products():
     return jsonify({"products": products})
 
 
-@blueprint.route('/<product_name>', methods=['GET'], endpoint='product')
+@blueprint.route('/<product_name>', methods=['GET'], endpoint='get_product')
 def get_product(product_name):
     prod_ent = ProductsEntity()
     query = {"name": product_name}

@@ -1,13 +1,18 @@
 from pymongo import MongoClient
 
-from constants import DATABASE_NAME, USERNAME, PASSWORD, CLUSTER_NAME
+from constants import DATABASE_NAME, DB_USER, PASSWORD, CLUSTER_NAME
 
-username = USERNAME
-password = PASSWORD
-cluster_name = CLUSTER_NAME
-db_name = DATABASE_NAME
+# db_user = DB_USER
+# password = PASSWORD
+# cluster_name = CLUSTER_NAME
+# db_name = DATABASE_NAME
 
-uri = f"mongodb+srv://{username}:{password}@pitpluscluster.nmi1mya.mongodb.net/?retryWrites=true&w=majority&appName={cluster_name}"
+db_user = "eneilac01"
+password = "cacahuete"
+cluster_name = "Pit-plus"
+db_name = "shoppingCart"
+
+uri = "mongodb+srv://eneilac01:cacahuete@pit-plus.jgz6izo.mongodb.net/?retryWrites=true&w=majority&appName=Pit-plus"
 
 
 class Database:
