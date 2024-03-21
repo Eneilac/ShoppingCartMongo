@@ -1,14 +1,19 @@
 from pymongo import MongoClient
 
-username = "sergiofdezrc"
-password = "qogdy3kf"
-uri = f"mongodb+srv://{username}:{password}@pitpluscluster.nmi1mya.mongodb.net/?retryWrites=true&w=majority&appName=PitPlusCluster"
+from constants import DATABASE_NAME, USERNAME, PASSWORD, CLUSTER_NAME
+
+username = USERNAME
+password = PASSWORD
+cluster_name = CLUSTER_NAME
+db_name = DATABASE_NAME
+
+uri = f"mongodb+srv://{username}:{password}@pitpluscluster.nmi1mya.mongodb.net/?retryWrites=true&w=majority&appName={cluster_name}"
 
 
 class Database:
     def __init__(self):
         self.__client__ = MongoClient(uri)
-        self.__db__ = self.__client__['ShoppingCartDB']
+        self.__db__ = self.__client__[db_name]
 
     def __get_collection__(self, collection):
         return self.__db__[collection]
@@ -30,7 +35,7 @@ class Database:
         return lst
 
     def __update__(self, query, data, collection):
-        self.__db__[collection].update_one(query,  {"$set": data})
+        self.__db__[collection].update_one(query, {"$set": data})
 
     def __update_many__(self, query, data, collection):
         self.__db__[collection].update_many(query, data)
